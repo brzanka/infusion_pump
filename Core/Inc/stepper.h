@@ -17,7 +17,7 @@
 #define area				80.0 //mm^2
 
 int calc_steps (int doseinml);
-void set_speed (int milforsec);
+void set_speed (float mlforsec);
 void stepping (int step);
 void step_distance(int doseinml, int direction, float mlforsec);
 //42 mm - max distance

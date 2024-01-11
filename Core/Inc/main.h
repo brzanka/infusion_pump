@@ -76,6 +76,10 @@ void Error_Handler(void);
 #define PRZYCISK_2_Pin GPIO_PIN_15
 #define PRZYCISK_2_GPIO_Port GPIOB
 #define PRZYCISK_2_EXTI_IRQn EXTI4_15_IRQn
+#define LED_GREEN_Pin GPIO_PIN_6
+#define LED_GREEN_GPIO_Port GPIOC
+#define LED_RED_Pin GPIO_PIN_8
+#define LED_RED_GPIO_Port GPIOC
 #define TMS_Pin GPIO_PIN_13
 #define TMS_GPIO_Port GPIOA
 #define TCK_Pin GPIO_PIN_14

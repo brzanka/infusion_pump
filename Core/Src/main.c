@@ -129,28 +129,18 @@ int main(void)
   MX_LPUART1_UART_Init();
   MX_I2C1_Init();
   /* USER CODE BEGIN 2 */
-
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
 	lcd_init();
 	lcd_put_cur(row,col);
 	lcd_clear ();
 	menuInit(); // display first screen
-	for (int seq = 0; seq < 2000; seq ++)
-	{
-		for (int step = 2; step >= 0; step --)
-		{
-			stepping(step);
-			HAL_Delay(2);
-		}
-	}
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	while (1)
 	{
-
-		//menu();
+		menu();
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -463,6 +453,9 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
 
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOC, LED_GREEN_Pin|LED_RED_Pin, GPIO_PIN_RESET);
+
   /*Configure GPIO pins : PA0 PA1 PA4 LD2_Pin
                            PA8 */
   GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_4|LD2_Pin
@@ -484,6 +477,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : LED_GREEN_Pin LED_RED_Pin */
+  GPIO_InitStruct.Pin = LED_GREEN_Pin|LED_RED_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI4_15_IRQn, 0, 0);

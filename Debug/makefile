@@ -61,7 +61,7 @@ main-build: pmik2.elf secondary-outputs
 
 # Tool invocations
 pmik2.elf pmik2.map: $(OBJS) $(USER_OBJS) C:\Users\p2166\workspace_stm32\pmik2\STM32L073RZTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "pmik2.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"C:\Users\p2166\workspace_stm32\pmik2\STM32L073RZTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pmik2.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "pmik2.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"C:\Users\p2166\workspace_stm32\pmik2\STM32L073RZTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="pmik2.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
