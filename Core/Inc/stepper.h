@@ -16,9 +16,7 @@
 #define distance_per_rev	1.22
 #define area				80 //mm^2
 
-
-int calc_distance (int doseinml);
-int calc_speed (int milforsec);
+int calc_steps (int doseinml);
 void set_speed (int milforsec);
 void stepping (int step);
 void step_distance(int doseinml, int direction, float mlforsec);
