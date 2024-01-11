@@ -1,0 +1,5 @@
+../Core/Src/stepper.c:9:5:calc_distance	1
+../Core/Src/stepper.c:14:5:calc_speed	1
+../Core/Src/stepper.c:19:6:set_speed	1
+../Core/Src/stepper.c:25:6:stepping	7
+../Core/Src/stepper.c:63:6:step_distance	8
