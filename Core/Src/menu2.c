@@ -3,22 +3,23 @@
 #include "stdlib.h"
 #include <string.h>
 #include "stepper.h"
-GPIO_InitTypeDef GPIO_InitStructPrivate = {0};
- uint32_t previousMillis = 0;
- uint32_t currentMillis = 0;
- uint8_t keyPressed = 0;
 
- typedef struct mainMenu //struct of the element in the list
- {
-	 const char * text;
-	 struct mainMenu * next;
-	 struct mainMenu * previous;
-	 struct mainMenu * parent;
-	 struct mainMenu * child;
-	 uint8_t dose;
-	 float velocity;
-	 void (*menu_function)(void);
- } mainMenu;
+GPIO_InitTypeDef GPIO_InitStructPrivate = {0};
+uint32_t previousMillis = 0;
+uint32_t currentMillis = 0;
+uint8_t keyPressed = 0;
+
+typedef struct mainMenu //struct of the element in the list
+{
+	const char * text;
+	struct mainMenu * next;
+	struct mainMenu * previous;
+	struct mainMenu * parent;
+	struct mainMenu * child;
+	uint8_t dose;
+	float velocity;
+	void (*menu_function)(void);
+} mainMenu;
 
 mainMenu select;
 mainMenu newM;
@@ -61,12 +62,11 @@ mainMenu velocity5 = { "V:0.8ml/s", &velocity1, &velocity4, &dose1, &run, 0, 0.8
 mainMenu run = {"D:  ml V: m/s", NULL, NULL, &select, &select, 0, 0, start};
 mainMenu end = {"Done", &select, &select, &select, &select, 0, 0, restart};
 
-mainMenu * currentMenu = &select;
+mainMenu *currentMenu = &select;
 uint8_t curIndex = 0;
 uint8_t flag = 0;
 uint8_t actionFlag = 0;
 char number[1];
-
 
 void menuInit(void) //display first menu
 {
@@ -112,44 +112,47 @@ void stepInto(void) //enter into sub-menu
 
 void menu(void) //check which key was pressed and move in menu
 {
-	if(actionFlag!=0)
+	if(actionFlag != 0)
 	{
-	if(flag == 1)
-	{
-		if(currentMenu->next!=NULL)
+		if(flag == 1)
 		{
-		currentMenu = currentMenu->next;
-		displayCur();
+			if(currentMenu->next!=NULL)
+			{
+			currentMenu = currentMenu->next;
+			displayCur();
+			}
 		}
-	} else if(flag == 2)
-	{
-		if(currentMenu->previous!=NULL)
+		else if(flag == 2)
 		{
-		currentMenu = currentMenu->previous;
-		displayCur();
+			if(currentMenu->previous!=NULL)
+			{
+			currentMenu = currentMenu->previous;
+			displayCur();
+			}
 		}
-	} else if(flag == 3)
-	{
-		currentMenu ->menu_function();
-	} else if(flag == 4)
-	{
-		if(currentMenu->parent!=NULL)
+		else if(flag == 3)
 		{
-		currentMenu = currentMenu->parent;
-		displayCur();
+			currentMenu ->menu_function();
+		}
+		else if(flag == 4)
+		{
+			if(currentMenu->parent!=NULL)
+			{
+			currentMenu = currentMenu->parent;
+			displayCur();
+			}
 		}
 	}
-	}
-	actionFlag=0;
+	actionFlag = 0;
 }
 
 void setParameters(void) //take the velocity and dose values from chosen menu
 {
-	if(currentMenu->velocity!=0)
+	if(currentMenu->velocity != 0)
 	{
 		run.velocity = currentMenu->velocity;
 	}
-	if(currentMenu->dose!=0)
+	if(currentMenu->dose != 0)
 	{
 		run.dose = currentMenu->dose;
 	}

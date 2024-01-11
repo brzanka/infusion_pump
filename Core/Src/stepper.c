@@ -7,14 +7,13 @@
 #include "stepper.h"
 
 int calc_steps (int doseinml) {
-	int distanceinmm = doseinml * 1000 / area;
-	int steps = distanceinmm / linear_step;
+	int steps = (((doseinml * 1000) / area) / linear_step);
 	return steps;
 }
 
 void set_speed (int mlforsec) {
 	float mmforsec = mlforsec * 1000 / area;
-	int delayms = 1000 * linear_step / mmforsec;
+	int delayms = (1000 * linear_step) / mmforsec;
 	HAL_Delay(delayms);
 }
 

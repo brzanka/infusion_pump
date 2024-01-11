@@ -1,4 +1,4 @@
 ../Core/Src/stepper.c:9:5:calc_steps	24	static
-../Core/Src/stepper.c:15:6:set_speed	24	static
-../Core/Src/stepper.c:21:6:stepping	16	static
-../Core/Src/stepper.c:55:6:step_distance	64	static
+../Core/Src/stepper.c:14:6:set_speed	24	static
+../Core/Src/stepper.c:20:6:stepping	16	static
+../Core/Src/stepper.c:54:6:step_distance	64	static

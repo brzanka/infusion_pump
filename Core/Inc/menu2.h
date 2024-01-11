@@ -1,7 +1,3 @@
-//#define PRZYCISK_4 			GPIO_PIN_3
-//#define PRZYCISK_3			GPIO_PIN_4
-//#define PRZYCISK_2			GPIO_PIN_5
-//#define PRZYCISK_1			GPIO_PIN_10
 #define LCD_ROWS			2
 #define LCD_COLS			16
 

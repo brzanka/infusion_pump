@@ -14,15 +14,12 @@
 #define stepsperrev			48
 #define linear_step			0.0254
 #define distance_per_rev	1.22
-#define area				80 //mm^2
+#define area				80.0 //mm^2
 
 int calc_steps (int doseinml);
 void set_speed (int milforsec);
 void stepping (int step);
 void step_distance(int doseinml, int direction, float mlforsec);
 //42 mm - max distance
-//27 cm - length of rail
-//1.5 cm - tube for a syringe diameter. length around 3 cm or more
-//zmniejszyc nakladke na srube do 3 mm musi byc ciasno i dodac podpore na strzykawke
 
 #endif /* INC_STEPPER_H_ */
